@@ -1,13 +1,21 @@
 .SUFFIXES: .cpp .c
 .c.o:
 	@echo "[+] Compiling $<"
-	@gcc -O2 -c $<
+	@gcc -g -c $<
 
 objects = bmp.o cv.o main.o
 
 all: $(objects)
 	@echo "[+] Linking..."
-	@gcc -o main $(objects)
+	@gcc -O3 -o main $(objects)
+	@mkdir -p debug
+	@mv main debug/main
+	@rm $(objects)
+	@echo "Done"
+
+debug: $(objects)
+	@echo "[+] Linking..."
+	@gcc -g -o main $(objects)
 	@mkdir -p debug
 	@mv main debug/main
 	@rm $(objects)

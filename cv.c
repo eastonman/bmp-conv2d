@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 #include "cv.h"
 
 const char toRGB[3] = {'R', 'G', 'B'};
@@ -57,9 +58,18 @@ PixelBlock conv(PixelBlock input[][KERNEL_SIZE], const float kernel[][KERNEL_SIZ
     {
         for (int j = 0; j < KERNEL_SIZE; j++)
         {
-            result.R += input[i][j].R * kernel[i][j];
-            result.G += input[i][j].G * kernel[i][j];
-            result.B += input[i][j].B * kernel[i][j];
+            int16_t newR = input[i][j].R * kernel[i][j];
+            int16_t newG = input[i][j].G * kernel[i][j];
+            int16_t newB = input[i][j].B * kernel[i][j];
+
+            // R
+            result.R += newR;
+
+            // G
+            result.G += newG;
+
+            // B
+            result.B += newB;
         }
     }
     return result;

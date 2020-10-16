@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     ResultImg = Conv2D(img, kernel);
 
     // Save Result
-    if (SaveBMPImage("outline.bmp", ResultImg))
+    if (SaveBMPImage("gaussian.bmp", ResultImg))
     {
         printf("BMP image successfully processed.\n");
     }
