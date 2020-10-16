@@ -1,3 +1,10 @@
+# vscode
+.vscode/
+# Input file
+*.bmp
+# debug file
+debug/
+
 # Prerequisites
 *.d
 
