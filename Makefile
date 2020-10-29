@@ -9,7 +9,6 @@ all: $(objects)
 	@echo "[+] Linking..."
 	@gcc -O3 -o main $(objects)
 	@mkdir -p debug
-	@mv main debug/main
 	@rm $(objects)
 	@echo "Done"
 
@@ -22,5 +21,6 @@ debug: $(objects)
 	@echo "Done"
 
 clean: 
-	@rm debug/main
-	@rm debug -r
+	@rm -f debug/main
+	@rm debug -rf
+	@rm -f main
